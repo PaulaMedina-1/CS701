@@ -14,6 +14,26 @@ public class Segment {
         }
     }
 
+    public int findU(Point [] points){
+        int xMax = Integer.MIN_VALUE;
+        int yMax = Integer.MIN_VALUE;
+        int xMin = Integer.MAX_VALUE;
+        int yMin = Integer.MAX_VALUE;
+        for(Point point : points){
+            if (point.getx() > xMax){
+                xMax = point.getx();
+            }if (point.gety()  > yMax){
+                yMax = point.gety();
+            }if(point.getx()< xMin ){
+                xMin = point.getx();
+            }if(point.gety() < yMin){
+                yMin = point.gety();
+            }
+        }
+        return Math.max(xMax - xMin, yMax - yMin);
+
+    }
+
     public Point startPoint() {
         if (p1.getx() <= p2.getx()) {
             return p1;
@@ -39,4 +59,5 @@ public class Segment {
         return this.p2;
 
     }
+
 }
