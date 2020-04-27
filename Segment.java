@@ -59,5 +59,21 @@ public class Segment {
         return this.p2;
 
     }
+    
+    public void calculate_value(Segment s) {
+        double x1 = s.startPoint().getx();
+        double x2 = s.endPoint().getx();
+        double y1 = s.startPoint().gety();
+        double y2 = s.endPoint().gety();
+        int Nvalue = (int) (y1 + (((y2 - y1) / (x2 - x1)) * (value - x1)));
+    }
+
+    public void set_value(int value) {
+        this.value = value;
+    }
+
+    public int get_value() {
+        return this.value;
+    }
 
 }
