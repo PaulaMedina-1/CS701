@@ -47,6 +47,16 @@ import java.io.*;
 	            MinHeapify(binaryHeap, i, 0); 
 	        } 
 	    } 
+	  public void insert(Point p) {
+		 if (size == n) {
+			 return;
+		 }
+		 else {
+			 size++;
+			 binaryHeap[size-1] = p;
+			 MinHeapify(binaryHeap, n, n-1);
+		 }
+	 }
 	
   
 	
