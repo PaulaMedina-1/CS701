@@ -244,6 +244,13 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>>
 		BinaryNode<AnyType> left;   // Left child
 		BinaryNode<AnyType> right;  // Right child
 	}
+	static void seq(int low, int high, BinarySearchTree T) {
+		if (low<= high) {
+			int mid = (int)(low+high)/2;
+			T.insert(mid);
+			seq(low,mid-1,T);
+			seq(mid+1,high,T);
+		}
 
 
 	/** The tree root. */
