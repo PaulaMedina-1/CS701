@@ -65,7 +65,7 @@ public class Point implements Comparable<Point> {
         return new Point(getx() - point.getx(), gety() - point.gety());
     }
 
-    public boolean sameSegment(Point pi, Point pj, Point pk) {
+    public static boolean sameSegment(Point pi, Point pj, Point pk) {
 
         if (Math.min(pi.getx(), pj.getx()) <= pk.getx()
                 && Math.max(pi.getx(), pj.getx()) >= pk.getx()
@@ -76,16 +76,16 @@ public class Point implements Comparable<Point> {
         return false;
     }
 
-    public int product(Point p1, Point p2) {
+    public static int product(Point p1, Point p2) {
         return p1.getx() * p2.gety() - p2.getx() * p1.gety();
     }
 
-    public int direction(Point pi, Point pj, Point pk) {
+    public static int direction(Point pi, Point pj, Point pk) {
         return product(pk.subtract(pi), pj.subtract(pi));
     }
 
 
-    public boolean segmentsIntereesct(Point p1, Point p2, Point p3, Point p4) {
+    public static boolean segmentsIntersect(Point p1, Point p2, Point p3, Point p4) {
         int d1 = direction(p3, p4, p1);
         int d2 = direction(p3, p4, p2);
         int d3 = direction(p1, p2, p3);

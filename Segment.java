@@ -1,4 +1,4 @@
-public class Segment {
+public abstract class Segment implements Comparable<Segment> {
     public Point p1;
     public Point p2;
     public int value;

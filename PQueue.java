@@ -3,6 +3,8 @@ import java.io.*;
  public class PQueue {
 	
 	private Point[] binaryHeap;
+	int size;
+	int n = binaryHeap.length;
 	
 	public static void MinHeapify(Point binaryHeap[], int n, int i) 
     { 
@@ -56,9 +58,18 @@ import java.io.*;
 			 binaryHeap[size-1] = p;
 			 MinHeapify(binaryHeap, n, n-1);
 		 }
+		 size++;
 	 }
-	
-  
+
+
+	 public Point extractMin() {
+		  Point minimum = this.binaryHeap[0];;
+		 this.binaryHeap[0] = this.binaryHeap[this.size - 1];
+		 --this.size;
+		 this.MinHeapify(binaryHeap, n, 0);
+
+		 return minimum;
+	 }
 	
 
 }
