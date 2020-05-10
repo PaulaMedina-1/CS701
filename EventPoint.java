@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class EventPoint {
 	//making two list, one with points, one with the segments.
 	public ArrayList<Segment> segments;
-	public ArrayList<Point> points;
+	private double value;
 	public Point currentpoint;
 	public int Type; //is it start point, end?
 
