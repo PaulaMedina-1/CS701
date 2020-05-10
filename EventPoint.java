@@ -12,9 +12,17 @@ public class EventPoint {
 public EventPoint (Point p, Segment s, int type) {
 	this.currentpoint = p;
 	this.segments = new ArrayList<>(Arrays.asList(s));
-	this.points = new ArrayList<>(Arrays.asList(s.p1, s.p2));
+	this.value = p.getx();
 	this.Type = type;
 }
+	
+public EventPoint(Point p, ArrayList<Segment> s, int type) {
+        this.currentpoint = p;
+        this.segments = s;
+        this.value = p.getx();
+        this.type = type;
+    }
+
 
 public void add_segment(Segment s) {
     this.segments.add(s);
