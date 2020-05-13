@@ -1,5 +1,3 @@
-// PUT THIS HEADER ON TOP OF EACH OF YOUR CLASSES
-
 /*************************************************************************
  *
  *  Pace University
@@ -7,89 +5,55 @@
  *  Advanced Algorithms
  *
  *  Course: CS 701-801
- *  Name: PPaula Hernandez Medina
- *  Collaborators: None
- *  References: Introduction to Algorithms book. I also needed some guidance on how to start the tree so took a look at GeeksForGeeks.
- *  Assignment number 1
- *  Problem: Using a binary heap and a vEB tree to implement a priority queue. Comparing running times between both data structures
- *  as well as comparing assumptions with experimental results.
- *  Description: Implementing priority queues using binary heap and vEB. For the binary heap even though we discussed
- *  min heaps in class, I used max heap since the methods in the book were done for max heap. I also wrote assumptions of 
- *  running times and compared those with experimental values after running the code. 
+ *  Name: Paula Hernandez Medina, Daniel Berekdar
+ *  Collaborators: Carmine gave us some steps to follow for the implementation.
+ *  References: Introduction to Algorithms book.
+ *  Problem: Implementing the Sweep line algorithm
+ *  Description: IImplementing sweep line algorithm to find if in a set of segments there are any intersections.
+ *  The implementation has t be done using a Priority Queue(heapsort) and a tree for the first part of the assignment and radix
+ *  sort and VEBtree for the second part. The next part of the assignment was implementing a method to find the rage of x-values
+ *  and y-values. Depending on this range implement the intersection using either heapsort and AVL or radix sort and VEBtree. Lastly, we had to implement
+ *  two different sets (smooth and sparse and run the part two algorithm to compare running times between the sets.
  *
- *  Input: random values inserted into the priority queues
- *  Output: time taken to finish operations.
+ *  Input: Set of segments defined by two endpoints
+ *  Output: True if there is an intersection, false if segments don't intersect.
  *
  *  Visible data fields:
  *  COPY DECLARATION OF VISIBLE DATA FIELDS HERE
  *
  *  Visible methods:
- *  BinaryHeapPriorityQueue
- *  Insert
- *  Extractmax
- *  IncreaseKey
  *
+ Exchange()
+ ExtractMax()
+ IncreaseKey()
+ Insert()
+ Left()
+ MaxHeapify)
+ Parent()
+ Right()
+ binaryHeap()
+ maxSize()
+ size()
  *
- *   Remarks
- *   -------
+ *nanoseconds n = 102 n = 103 n = 104 n = 105 n = 106
+ * Smooth set   n/a     n/a     n/a     n/a     n/a
+ * Sparse set   n/a     n/a     n/a     n/a     n/a
  *
- *   1. Inserting into a priority queue that has been implemented using an array should only take O(lgn). 
- *   Therefore inserting n items into a binary heap should take n * O(lgn) time which is O(nlgn).
+ *What is the best function of n and/or u fitting your
+ * measurements? Notice that you are evaluating rate of growth, you are
+ * not being asked which one is faster. Are the results consistent with
+ * the query time of the data structures and algorithms used? Justify
+ * explaining the running time of each.
  *
- *   2. In order to find the amortized time of m >= n operations we need to analyze running times of each method individually.
- *   Each time we perform extractmax the worst case running time is O(lgn). Each time we perform insert it takes O(lgn).
- *   Each time we perform increaseKey it also takes O(lgn). To calculate the amortized running time we need to consider that
- *   in order to extract max or increase key we first must insert k items. Each extract max corresponds to one insert so the cost of inserting will be
- *   O(2lgn)=> O(lgn) and the cost of extract max will be O(1) since it is already paid in the insert. My biggest issue now, is that I can have many
- *   increase key that correspond with one insert. I believe it won't change anything but I am not too sure aout it.
- *
- *   3. Inserting into a priority queue that has been implemented using a vEB tree should take O(lglgn). This means that inserting 
- *   n items will take n * O(lglgn) which is O(nlglgn)
- *
- *   4. To find the amortized time of the operations we analyze time that each operation take. In order to extract max k times we must have first
- *   inserted k items. This will require k+1 operations. As mentioned before, inserting takes O(lglgn) while extracting max will also take O(lglgn). Finding
- *   the max takes O(1) but removing it takes O(lglgn). I believe the overall amortized time will be )(lglgn).
- *
- *   5. For this question my code wasn't running properly and I could not figure out how to fix it. I ended up using a different code that has nothing to do with the
- *   one in the book to obtain experimental results. The running times were still the same but the implementation was different.
- *
- *
- *   CONSTRUCTION TIME|n = 100|n = 1000|n = 10000|n = 100000|n = 1000000
- *   BH				  |134892 |342213  |3410929  |17720268  |125714835
- *   VEB			  |48150  |286373  |1340493  |4290290   |9124748
- *
- *   OPERATIONS       |n = 100|n = 1000|n = 10000|n = 100000|n = 1000000
- *   BH				  |160176 |437706  |2178705  |20899524  |136046265
- *   VEB			  |142163 |429571 |1856565  |3399012   |8333165
- *
- *
- *
- *   6. 
- *   Construction time in a binary heap should take O(nlgn) time as mentioned in question 1. The results obtained
- *   grow a lot faster than nlgn, almost exponential. This means that the experimental results don't correspond with 
- *   the assumption. 
- *   Construction time in a vEB tree also shows different results than expected. When I run a regression to find the appropiate plot,
- *   I end up getting exponential plot in the form of 113054. e^(0.880686 x). This grows a lot faster than the nlglgn time we were expecting.
- *
- *   Regarding operations in a Binary Heap, the expected time was lg(n). Once I try to fit the results, I observe that again, it is not a log fit, but it looks
- *   like an exponential plot (10854.7 e^(1.88726 x)). This means that the results obtain are not correct, and that they don't correspond with the lgn fit we were expecting.
- *
- *   Operations in a vBE tree also don't match the expected. It also follows an exponential fit (116341. e^(0.853872 x)) when we were looking for lglgn fit.
- *   Again this means that our results grow faster than what we were expecting.
- *
- *   Overall, inaccurate results were obtained and don't prove our assumptions. However, comparing vEB and Binary Heap, we can see how even if graphs grow fster than expected,
- *   vEB are faster than Binary Heaps.
- *
- *
- *
- *
- *
- *
- *
- *
+ * In relation to a smooth set and a sparse set, the expected results are such
+ * that the sparse set will expect to perform better
+ * due to the nature of  the smooth set, we  are storing based on the index of the element.
+ * As a result of the bit array in the sparse set,
+ * as the input size increases we expect to see that the rate of growth should
+ * be dramatically reduced. The sparse set with the bit array will asymptotically
+ * grow at a significantly slower rate than that of the smooth set.
  *
  *************************************************************************/
-
 
 public class BinaryHeapPriorityQueue {
 
